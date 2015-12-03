@@ -74,7 +74,7 @@ function getFilter(desviation,nivel)
   		x[i] = new Array(nivel);
   		for(var k = 0; k < nivel ; k++)
   		{
-  			//0 = -1; 1=0; 2=1
+  			//Formula del filtro gaussiano
   			x[i][k] = (Math.pow(Math.E,-(Math.pow(i-(nivel-1)/2,2)+Math.pow(k-2,2))/(2*Math.pow(desviation,2))))/(2*Math.PI*Math.pow(desviation,2));
   		}
 	}
@@ -97,7 +97,7 @@ function getFilter(desviation,nivel)
 	
 }
 	
-	document.getElementById("scream").onload = function() {
+	function doTheThing(input) {
 		    var c = document.getElementById("myCanvas");
 		    var ctx = c.getContext("2d");
 		    var img = document.getElementById("scream");
@@ -124,7 +124,7 @@ function getFilter(desviation,nivel)
 		    	}
 		    }
 		 
-		    imgDat = gauss(matriz,10,imgData,9);
+		    imgDat = gauss(matriz,10,imgData,input);
 		    /*for (i = 0; i < 80000; i += 4) {
 		        imgData.data[i] = 255 - imgData.data[i];
 		        imgData.data[i+1] = 255 - imgData.data[i+1];

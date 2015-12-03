@@ -1,14 +1,65 @@
 <html>
 	<head>
-		
-	
+		<meta charset="ISO-8859-1">
+		<link rel="stylesheet" href="css/foundation.css" />
+    	<link rel="stylesheet" href="css/app.css" />
 	</head>
 	<body>
-		<img id="scream" src="sc.jpg" alt="The Scream" width="358" height="450" crossorigin = "Anonymous">
-		<canvas id="myCanvas" width="358" height="450" style="border:1px solid #d3d3d3;">
-		Your browser does not support the HTML5 canvas tag.</canvas>
+		<div class="row">
+			<h1  align="center">Desenfoque de imagen</h1>
+			<h3 id="value" align="center">Nivel 1</h3>
+		
+			<div class="small-6 columns">
+				<img id="scream" src="sc.jpg" alt="The Scream" width="358" height="450" crossorigin = "Anonymous">
+			</div>
+			<div class="small-6 columns">
+				<canvas id="myCanvas" width="358" height="450" style="border:1px solid #d3d3d3;float:right;">
+				Your browser does not support the HTML5 canvas tag.</canvas>
+			</div>
+				
+		</div>
+
+		<div class="row">
+			<h1>Selecciona el nivel</h1>
+			<div class="slider small-10 columns" data-slider data-initial-start='.00' data-end='.05' id="sli">
+				  <span class="slider-handle"  data-slider-handle role="slider" tabindex="2"></span>
+				  <span class="slider-fill" data-slider-fill></span>
+				  <input type="hidden" id="in" value="">
+
+			</div>
+			<div class="small-2 columns">
+				<a class="expanded button" href="#"onclick="getLevel()">Go</a>
+			</div>
+			
+		</div>
+		
+		
 
 	<script src="Gaussian2.js"></script>
-	
+	 <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/what-input.min.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+      $(document).foundation();
+
+      getLevel();
+
+      $('#in').on('change',  function() {
+ 		var input = $('#in').val();
+ 		input=input*100 +1;
+ 		window.alert(input);
+ 		
+	  });
+
+      function getLevel()
+      {
+      	var input = $('#in').val();
+      	input = input*2*100+3;
+      	$("#value").html("Nivel " + ((input-3)/2));
+      	doTheThing(input);
+      	 
+      }
+    </script>
 	</body>
 </html>
